@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Чемпионат рефлексии — общий экран</title><link rel="stylesheet" href="/common.css"></head>
+<body>
+<div id="stage">
+ <div id="rays"></div><div id="trackDeco"></div>
+ <div id="top">
+  <div class="logo"><svg width="46" height="46" viewBox="0 0 44 44"><circle cx="22" cy="26" r="15" fill="#FEC50C" stroke="#E0A800" stroke-width="3"/><path d="M14 2 L21 14 L25 14 L18 2Z" fill="#00AFCA"/><path d="M30 2 L23 14 L19 14 L26 2Z" fill="#E0115F"/><path d="M22 18 l2.4 5 5.4 .7 -4 3.7 1 5.4 -4.8 -2.7 -4.8 2.7 1 -5.4 -4 -3.7 5.4 -.7z" fill="#fff"/></svg><div>ЧЕМПИОНАТ<br>РЕФЛЕКСИИ<small>ГОЛОСОВАНИЕ С ТЕЛЕФОНОВ</small></div></div>
+  <div id="tabs"></div>
+  <div class="tools">
+   <div class="sw" title="Секундомер рефлексии"><svg viewBox="0 0 24 24" fill="none" stroke="#FEC50C" stroke-width="2.2"><circle cx="12" cy="13.5" r="8"/><path d="M12 13.5V9M10 2.5h4M18.5 6.5l1.5-1.5"/></svg><span class="t" id="swT">00:00</span><button class="ib" id="swPlay"></button><button class="ib" id="swReset" title="Сбросить секундомер"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 2.5-5.8"/><path d="M4 4v4h4"/></svg></button></div>
+   <button class="ib" id="muteBtn"></button>
+   <button class="ib" id="fsBtn" title="Во весь экран"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+   <button class="ib red" id="newBtn" title="Новая сессия — другой класс"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+  </div>
+ </div>
+
+ <section class="scr" id="lob">
+  <div class="left card">
+   <span class="kick" style="align-self:flex-start">11 КЛАСС • ГЕОГРАФИЯ • РЕФЛЕКСИЯ</span>
+   <div class="h1" style="font-size:70px">ЧЕМПИОНАТ<br>РЕФЛЕКСИИ</div>
+   <div class="sub" style="font:800 26px var(--font);color:var(--orange)">«Переход к устойчивому развитию»</div>
+   <div class="steps">
+    <div class="chip" style="justify-content:flex-start;font-size:21px"><b style="font-size:30px;color:var(--sky)">1</b>Наведи камеру телефона на QR-код</div>
+    <div class="chip" style="justify-content:flex-start;font-size:21px"><b style="font-size:30px;color:var(--orange)">2</b>Голосуй на своём телефоне — один голос на этап</div>
+    <div class="chip" style="justify-content:flex-start;font-size:21px"><b style="font-size:30px;color:var(--green)">3</b>Итоги всего класса появятся здесь сразу</div>
+   </div>
+   <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+    <div class="chip">Подключено телефонов:<b class="c" id="lobOnline">0</b></div>
+    <button class="btn" id="startBtn">Открыть этап 1 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></button>
+   </div>
+   <div class="castRow" id="castRow"></div>
+  </div>
+  <div class="qrBig card">
+   <div class="qr" id="qrBig"></div>
+   <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+    <span class="live" style="align-self:flex-start"><i></i>ПРЯМОЙ ЭФИР</span>
+    <div style="font:900 26px var(--font)">Код комнаты</div>
+    <div class="code" id="codeBig">····</div>
+    <div style="font:800 19px var(--font);color:var(--ink2)">или открой ссылку:</div>
+    <div class="url" id="urlBig"></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="scr" id="stg">
+  <div class="head">
+   <div class="banner" id="banner"><div class="stn" id="stn">ЭТАП 1 из 5</div><div class="ph" style="position:absolute;left:0;bottom:0;border:none;box-shadow:none;background:none;overflow:visible"><span id="bLab"></span></div></div>
+   <div class="qbox card"><div style="display:flex;gap:10px;align-items:center"><span class="kick" id="kick"></span><span class="live"><i></i>ИДЁТ ГОЛОСОВАНИЕ</span></div><div id="qTitle"></div><div id="qNote"></div></div>
+   <div id="joinBox" class="card"><div class="qr" id="qrSmall"></div><div class="jt">Голосуй с телефона<b id="codeSmall">····</b><span class="url" id="urlSmall"></span></div></div>
+  </div>
+  <div id="lanes"></div>
+  <div class="foot">
+   <button class="btn white" id="prevBtn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 5L5 12l12 7z"/></svg> Назад</button>
+   <div style="margin:0 auto;display:flex;gap:14px">
+    <div class="chip">Подключено:<b id="online">0</b></div>
+    <div class="chip"><span id="votedLab">Проголосовали:</span><b class="c" id="voted">0</b></div>
+   </div>
+   <button class="btn green" id="nextBtn">Следующий этап <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></button>
+  </div>
+ </section>
+
+ <section class="scr" id="fin">
+  <div class="top">
+   <div class="ttl card" id="finTtl"><span class="kick" style="align-self:flex-start">ЦЕРЕМОНИЯ НАГРАЖДЕНИЯ</span><div class="h1" style="font-size:68px">НАГРАЖДЕНИЕ</div><div class="win">Победитель — весь класс!</div>
+    <p>Устойчивое развитие — командная победа: экология, экономика и общество финишируют только вместе. <span id="finSum"></span></p></div>
+   <div id="podium"></div>
+  </div>
+  <div id="medalTable"></div>
+  <div class="foot">
+   <button class="btn blue" id="againBtn">К этапу 1</button>
+   <button class="btn crim" id="finNew">Новая сессия — другой класс</button>
+   <button class="btn white" id="credBtn" style="font-size:20px">Источники фото</button>
+  </div>
+ </section>
+
+ <canvas id="confetti"></canvas>
+ <div class="toast" id="toast"></div>
+ <div class="err" id="err">Нет связи с сервером. Пробуем снова…</div>
+ <div class="modal" id="modal"><div class="box card" id="mBox"></div></div>
+</div>
+<script src="/qr.js"></script><script src="/chars.js"></script><script src="/data.js"></script><script src="/credits.js"></script><script src="/board.js"></script>
+</body></html>
